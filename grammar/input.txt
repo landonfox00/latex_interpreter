@@ -1,0 +1,8 @@
+
+Show that there exists two primes $p$, $q$ such that $p-q=2020$
+$$ let p = 2039, q = 19
+
+Show that there exists two primes $p$, $q$ such that $p-q=295$
+$$ odd(295) &-> odd(p) and even(q) or even(p) and odd(q)
+Case 1
+$$ even(q)
