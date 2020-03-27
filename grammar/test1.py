@@ -11,9 +11,6 @@ class GrammarPrintListener(GrammarListener):
         else:
             print('----importing {0}'.format(ctx.TERM(0)))
 
-    def enterComment(self, ctx):
-        print('----skipping comment')
-
 
 def main():
     lexer = GrammarLexer(StdinStream())

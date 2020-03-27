@@ -7,7 +7,7 @@ grammar Grammar;
 
 program					: statement* ;
 
-statement				: ( import_ | block | print_ | definition | comment )? NEWLINE ;
+statement				: ( import_ | block | print_ | definition )? NEWLINE ;
 
 import_					: 'import' TERM ( 'as' TERM )? ;
 
@@ -22,15 +22,15 @@ print_					: multiline_description | ( '$$' | '""' ) multiline_expression ;
 
 multiline_description	: description | '$' expression '$' | multiline_description ( NEWLINE TAB+ )? multiline_description ;
 
-description				: ( TERM | NON_OPERATOR | '\\' OPERATOR ) description? ;
+description				: ( TERM | NON_OPERATOR | '\\' OPERATOR )+ ;
 
 multiline_expression	: expression ( NEWLINE TAB+ expression )? ;
 
-expression				: ( TERM | CHARACTER ) expression? ;
+expression				: ( TERM | CHARACTER )+ ;
 
 definition				: TERM '=' ( block | print_ ) ;
 
-comment					: '%' CHARACTER* ;
+Comment					: '%' (' ' | CHARACTER)* -> skip ;
 
 
 /*
