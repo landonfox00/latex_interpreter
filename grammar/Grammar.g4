@@ -11,10 +11,9 @@ statement				: ( import_ | block | print_ | definition | comment )? NEWLINE ;
 
 import_					: 'import' TERM ( 'as' TERM )? ;
 
-// TODO: import block bodies
-block					: header NEWLINE ;
+block					: header NEWLINE ; // TODO: import block bodies
 
-header					: ( TERM | multiline_description ) ( '[' parameters ']' )? ':' ;
+header					: multiline_description ( '[' parameters ']' )? ':' ;
 
 parameters				: ( definition | description ) ( ',' parameters )? ;
 
@@ -22,11 +21,11 @@ print_					: multiline_description | ( '$$' | '""' ) multiline_expression ;
 
 multiline_description	: description | '$' expression '$' | multiline_description ( NEWLINE TAB+ )? multiline_description ;
 
-description				: ( TERM | NON_OPERATOR | '\\' OPERATOR ) description? ;
+description				: ( TERM | NON_OPERATOR | '\\' OPERATOR )+ ;
 
-multiline_expression	: expression ( NEWLINE TAB+ expression )? ;
+multiline_expression	: expression ( NEWLINE TAB+ expression )* ;
 
-expression				: ( TERM | CHARACTER ) expression? ;
+expression				: ( TERM | CHARACTER )+ ;
 
 definition				: TERM '=' ( block | print_ ) ;
 
@@ -47,6 +46,6 @@ NON_OPERATOR			: '\u0021' | [\u0027-\u002f] | '\u003b' | '\u003c' | [\u003e-\u00
 
 TAB						: '\t' ;
 
-NEWLINE					: '\n' ;
+NEWLINE					: ( '\n' | '\r' )+ ;
 
 WHITESPACE				: ' ' -> skip ;
