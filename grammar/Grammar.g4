@@ -46,6 +46,6 @@ NON_OPERATOR			: '\u0021' | [\u0027-\u002f] | '\u003b' | '\u003c' | [\u003e-\u00
 
 TAB						: '\t' ;
 
-NEWLINE					: ( '\n' | '\r' )+ ;
+NEWLINE					: ( '\n' | '\r\n' )+ ;
 
 WHITESPACE				: ' ' -> skip ;
