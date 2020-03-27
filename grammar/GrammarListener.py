@@ -1,4 +1,4 @@
-# Generated from .\Grammar.g4 by ANTLR 4.7.2
+# Generated from Grammar.g4 by ANTLR 4.8
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .GrammarParser import GrammarParser
@@ -116,12 +116,5 @@ class GrammarListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by GrammarParser#comment.
-    def enterComment(self, ctx:GrammarParser.CommentContext):
-        pass
 
-    # Exit a parse tree produced by GrammarParser#comment.
-    def exitComment(self, ctx:GrammarParser.CommentContext):
-        pass
-
-
+del GrammarParser

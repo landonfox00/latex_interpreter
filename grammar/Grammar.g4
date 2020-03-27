@@ -7,7 +7,7 @@ grammar Grammar;
 
 program					: statement* ;
 
-statement				: ( import_ | block | print_ | definition | comment )? NEWLINE ;
+statement				: ( import_ | block | print_ | definition )? NEWLINE ;
 
 import_					: 'import' TERM ( 'as' TERM )? ;
 
@@ -29,7 +29,7 @@ expression				: ( TERM | CHARACTER )+ ;
 
 definition				: TERM '=' ( block | print_ ) ;
 
-comment					: '%' CHARACTER* ;
+Comment					: '%' (' ' | CHARACTER)* -> skip ;
 
 
 /*
